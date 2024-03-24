@@ -1,16 +1,19 @@
 package core;
 
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ProductCatalog implements Menu{
 	private ApplicationContext context;
 	private ProductManagementService productManagementService;
+	private ResourceBundle rb;
 	
 	
 	{
 		context = ApplicationContext.getInstance();
 		productManagementService = DefaultProductManagementService.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	   
 	}
 	
@@ -25,9 +28,10 @@ public class ProductCatalog implements Menu{
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
+		System.out.println(rb.getString("product.catalog.header"));
 		pList();
 		
-		System.out.println("Enter product id to add it to the cart or ‘menu’ if you want to navigate back to the main menu’");
+		System.out.println(rb.getString("enter.product.id"));
 		Scanner sc = new Scanner(System.in);
 		String input = sc.next();
 		
@@ -44,15 +48,15 @@ public class ProductCatalog implements Menu{
 				for(Product p : productManagementService.getProducts()) {
 					if(Integer.valueOf(input) == p.getId()&&context.getLoggedInUser()!=null) {
 						context.getSessionCart().addProduct(p);
-						System.out.println("Product "+p.getProductName() +"has been added to your cart.");
+						System.out.println("Product "+p.getProductName() +rb.getString("product.added.to.cart"));
 					}
 					if(context.getLoggedInUser()==null) {
-						System.out.println("You are not logged in. Please, sign in or create new account");
+						System.out.println(rb.getString("not.logged.in.msg"));
 						context.getMainMenu().start();
 					}
 					
 				}
-				System.out.println("Please, enter product ID if you want to add product to cart. Or enter ‘checkout’ if you want to proceed with checkout. Or enter ‘menu’ if you want to navigate back to the main menu");
+				System.out.println(rb.getString("enter.product.id"));
 				pList();
 				input = sc.next();
 				

@@ -1,46 +1,56 @@
 package core;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Settings implements Menu {
 	
 	private ApplicationContext context;
-
-	String option = "1-Change Password" + "\n" + "2-Change Email";
+	private ResourceBundle rb;
 	
 	{
 		context = ApplicationContext.getInstance();
+		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
 	}
+
+	String option = rb.getString("settings.options");
+	
+	
 	
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
+		
+		System.out.println(rb.getString("settings.menu.header"));
+		
 		if(context.getLoggedInUser()==null) {
-			System.out.println("Please, log in or create new account to change your account settings");
+			System.out.println(rb.getString("no.user.sign"));
 			context.getMainMenu().start();
 		}
 		System.out.println(option);
 		Scanner sc = new Scanner (System.in);
 		String input = sc.next();
 		if(input.equals("1")) {
-			System.out.println("Enter new password");
+			System.out.println(rb.getObject("change.password.header"));
+			System.out.println(rb.getObject("enter.new.pass.cta"));
 			String pass = sc.next();
 			context.getLoggedInUser().setPassword(pass);
-			System.out.println("Your password has been successfully changed");
+			System.out.println(rb.getString("change.password.msg"));
 			context.getMainMenu().start();
 		}
 		else if(input.equals("2")) {
-			System.out.println("Enter new email");
+			System.out.println(rb.getString("change.email.header"));
+			System.out.println(rb.getString("enter.new.email.cta"));
 			String email = sc.next();
 			context.getLoggedInUser().setEmail(email);
-			System.out.println("Your email has been successfully changed");
+			System.out.println(rb.getString("mail.changed.msg"));
 			context.getMainMenu().start();
 		}
 		else if(input.equals("menu")) {
 			context.getMainMenu().start();
 		}
 		else {
-			System.out.println("Only 1, 2 is allowed. Try one more time");
+			System.out.println(rb.getString("settings.option.validation.msg"));
 			System.out.println(option);
 		}
 	}

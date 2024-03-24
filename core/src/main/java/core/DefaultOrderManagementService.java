@@ -5,17 +5,10 @@ import java.util.List;
 
 public class DefaultOrderManagementService implements OrderManagementService  {
 
-//	private ApplicationContext context;
 	private static DefaultOrderManagementService instance;
 	private List<Order> orders = new ArrayList<Order>();
-//	private Checkout checkInstance;
-	
-	
-	
-	{
-//		context = ApplicationContext.getInstance();
-//		checkInstance = Checkout.getInstance();
-	}
+
+
 	
 	
 	public static OrderManagementService getInstance() {
@@ -35,14 +28,13 @@ public class DefaultOrderManagementService implements OrderManagementService  {
 	@Override
 	public List<Order> getOrdersByUserId(int userId) {
 		// TODO Auto-generated method stub
-		List<Order> userOrder=new ArrayList<Order>() ;
+		List<Order> userOrders=new ArrayList<Order>() ;
 		for(Order order : orders) {
 			if(order.getCustomerId()==userId) {
-				userOrder.add(order);
-				return userOrder;
+				userOrders.add(order);
 			}
 		}
-		return null;
+		return userOrders;
 	}
 
 	@Override

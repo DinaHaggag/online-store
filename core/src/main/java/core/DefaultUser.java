@@ -4,12 +4,15 @@ public class DefaultUser implements User {
     private static int userCounter = 1; // static counter for user IDs
 
     private int id;
+    @Validate(pattern="[a-zA-Z]+")
     private String firstName;
+    @Validate(pattern="[a-zA-Z]+")
     private String lastName;
-    private String password;
+    @Validate(pattern=".+@\\w+[.com]")
     private String email;
+    private String password;
 
-    public DefaultUser(String firstName, String lastName, String password, String email) {
+    public DefaultUser(String firstName, String lastName, String email, String password) {
         this.id = userCounter++;
         this.firstName = firstName;
         this.lastName = lastName;

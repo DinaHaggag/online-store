@@ -26,11 +26,12 @@ public class Checkout implements Menu {
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
-		System.out.println("Enter your credit card number without spaces and press enter if you confirm purchase");
+		System.out.println("checkout.menu.header");
+		System.out.println("enter.credit.card.number.cta");
 		Scanner sc = new Scanner(System.in);
 		CharSequence creditCard = sc.next();
 		if(Pattern.matches("\\d{16}",creditCard)) {
-			System.out.println("Thanks a lot for your purchase. Details about order delivery are sent to your email");
+			System.out.println("thank.you.msg");
 
 			orderManagementService.addOrder(createOrder(creditCard));
 			
@@ -38,7 +39,7 @@ public class Checkout implements Menu {
 			
 			context.getMainMenu().start();
 		}
-		System.out.println("You entered invalid credit card number. Valid credit card should contain 16 digits. Please, try one more time");
+		System.out.println("invalid.credit");
 	}
 	
 

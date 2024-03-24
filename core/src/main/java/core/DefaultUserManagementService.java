@@ -3,7 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultUserManagementService implements UserManagementService {
+public class DefaultUserManagementService implements UserManagementService  {
 	private ApplicationContext context;
 	
 	List<User> userList = new ArrayList<User>();
@@ -75,4 +75,6 @@ public class DefaultUserManagementService implements UserManagementService {
 		return context.getLogInUsers();
 	}
 
+
+	
 }
