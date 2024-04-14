@@ -1,11 +1,15 @@
-package org.NewCore;
+package core;
 
 import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-
+import persistence.entities.DefaultUser;
+import persistence.entities.User;
+import persistence.validation.DefaultValidator;
+import persistence.validation.Validator;
 
 public class ValidateTest {
 	private Validator validatorTest = new DefaultValidator();

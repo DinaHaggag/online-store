@@ -1,4 +1,5 @@
-package org.NewCore;
+package core;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,14 +8,18 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-@ExtendWith(MockitoExtension.class)
+import core.mail.MailSender;
+import core.menu.DefaultResetPasswordService;
+import core.menu.ResetPasswordService;
+import persistence.entities.DefaultUser;
+import persistence.entities.User;
+
+
 public class ResetPasswordServiceTest {
 	
 	@Mock

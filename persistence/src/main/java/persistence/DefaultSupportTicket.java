@@ -1,5 +1,7 @@
 package persistence;
 
+import persistence.entities.Priority;
+
 public class DefaultSupportTicket implements SupportTicket {
 	private static int counter;
 

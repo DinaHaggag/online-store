@@ -1,5 +1,7 @@
 package persistence;
 
+import persistence.entities.Priority;
+
 public enum RequestType {
 
 	OTHER(Priority.LOW), 
