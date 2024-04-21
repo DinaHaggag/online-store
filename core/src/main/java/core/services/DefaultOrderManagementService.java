@@ -1,14 +1,14 @@
 package core.services;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import core.menu.Order;
+import java.util.List;
+import persistence.entities.Purchase;
 
 public class DefaultOrderManagementService implements OrderManagementService  {
 
 	private static DefaultOrderManagementService instance;
-	private List<Order> orders = new ArrayList<Order>();
+	private List<Purchase> orders = new ArrayList<Purchase>();
 
 
 	
@@ -22,16 +22,16 @@ public class DefaultOrderManagementService implements OrderManagementService  {
 	
 	
 	@Override
-	public void addOrder(Order order) {
+	public void addOrder(Purchase order) {
 		// TODO Auto-generated method stub
 		orders.add(order);
 	}
 
 	@Override
-	public List<Order> getOrdersByUserId(int userId) {
+	public List<Purchase> getOrdersByUserId(int userId) {
 		// TODO Auto-generated method stub
-		List<Order> userOrders=new ArrayList<Order>() ;
-		for(Order order : orders) {
+		List<Purchase> userOrders=new ArrayList<Purchase>() ;
+		for(Purchase order : orders) {
 			if(order.getCustomerId()==userId) {
 				userOrders.add(order);
 			}
@@ -40,8 +40,8 @@ public class DefaultOrderManagementService implements OrderManagementService  {
 	}
 
 	@Override
-	public List<Order> getOrders() {
-		// TODO Auto-generated method stub
+	public List<Purchase> getOrders() {
+		
 		return this.orders;
 	}
 

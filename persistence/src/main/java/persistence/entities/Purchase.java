@@ -4,15 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface Purchase extends Serializable{
-	boolean isCreditCardNumberValid(String userInput);
-
-	void setCreditCardNumber(String userInput);
-
-	void setProducts(List<Product> products);
-	
+	boolean isCreditCardNumberValid(CharSequence userInput);
+	 void setCreditCardNumber(CharSequence creditCard);
+	 void setProducts(List<Product> products);
+	 void setCustomerId(int customerId);
+	 int getCustomerId();
 	List<Product> getProducts();
-
-	void setCustomerId(int customerId);
-	
-	int getCustomerId();
 }

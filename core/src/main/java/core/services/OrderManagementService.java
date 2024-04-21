@@ -2,13 +2,13 @@ package core.services;
 
 import java.util.List;
 
-import core.menu.Order;
+import persistence.entities.Purchase;
 
 public interface OrderManagementService {
 	
-	void addOrder(Order order);
+	void addOrder(Purchase order);
 
-	List<Order> getOrdersByUserId(int userId);
+	List<Purchase> getOrdersByUserId(int userId);
 	
-	List<Order> getOrders();
+	List<Purchase> getOrders();
 }

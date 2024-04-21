@@ -2,22 +2,27 @@ package persistence.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class DefaultPurchase implements Purchase {
-private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
-	
-	private String creditCardNumber;
+	private CharSequence creditCardNumber;
 	private List<Product> products;
 	private int customerId;
 
+	
 	@Override
-	public boolean isCreditCardNumberValid(String creditCardNumber) {
-		return creditCardNumber.toCharArray().length == AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER && 
-				!creditCardNumber.contains(" ") && Long.parseLong(creditCardNumber) > 0;
+	public boolean isCreditCardNumberValid(CharSequence userInput) {
+		
+		if(Pattern.matches("\\d{16}",userInput)) {
+			return true;
+		}
+		return false;
 	}
 
+
 	@Override
-	public void setCreditCardNumber(String creditCardNumber) {
+	public void setCreditCardNumber(CharSequence creditCardNumber) {
+	
 		if (creditCardNumber == null) {
 			return;
 		}
@@ -31,12 +36,13 @@ private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
 
 	@Override
 	public void setCustomerId(int customerId) {
+		
 		this.customerId = customerId;
 	}
 
-
 	@Override
 	public int getCustomerId() {
+		
 		return this.customerId;
 	}
 	
@@ -44,7 +50,7 @@ private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
 	public String toString() {
 		return "Order: customer id - " + this.customerId + "\t" +
 					"credit card number - " + this.creditCardNumber + "\t" + 
-					"products - " + this.products;
+					"products - " + this.products.toString();
 	}
 
 	@Override

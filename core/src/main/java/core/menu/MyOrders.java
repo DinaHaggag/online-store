@@ -6,6 +6,7 @@ import java.util.List;
 import core.context.ApplicationContext;
 import core.services.DefaultOrderManagementService;
 import core.services.OrderManagementService;
+import persistence.entities.Purchase;
 
 public class MyOrders implements Menu {
 	private ApplicationContext context;
@@ -31,14 +32,14 @@ public class MyOrders implements Menu {
 	}
 	
 	private void printUserOrdersToConsole() {
-		List<Order> loggedInUserOrders = orderManagementService
+		List<Purchase> loggedInUserOrders = orderManagementService
 				.getOrdersByUserId(context.getLoggedInUser().getId());
 		
 		if (loggedInUserOrders == null || loggedInUserOrders.size() == 0) {
 			System.out.println(
 					"Unfortunately, you don't have any orders yet");
 		} else {
-			for (Order order : loggedInUserOrders) {
+			for (Purchase order : loggedInUserOrders) {
 				System.out.println(order.toString());
 				
 			}
