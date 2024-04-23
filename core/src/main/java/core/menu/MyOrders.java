@@ -1,6 +1,5 @@
 package core.menu;
 
-import java.util.Arrays;
 import java.util.List;
 
 import core.context.ApplicationContext;
@@ -20,7 +19,7 @@ public class MyOrders implements Menu {
 	
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
+		
 		if(context.getLoggedInUser()==null) {
 			System.out.println("Please, log in or create new account to see list of your orders");
 			context.getMainMenu().start();
@@ -40,8 +39,8 @@ public class MyOrders implements Menu {
 					"Unfortunately, you don't have any orders yet");
 		} else {
 			for (Purchase order : loggedInUserOrders) {
+				System.out.println("Processing order: ");
 				System.out.println(order.toString());
-				
 			}
 			
 		}

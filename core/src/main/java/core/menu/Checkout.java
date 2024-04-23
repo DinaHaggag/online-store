@@ -38,18 +38,27 @@ public class Checkout implements Menu {
 		System.out.println(rb.getString("checkout.menu.header"));
 		System.out.println(rb.getString("enter.credit.card.number.cta"));
 		Scanner sc = new Scanner(System.in);
-		CharSequence creditCard = sc.next();
-		if(Pattern.matches("\\d{16}",creditCard)) {
-			System.out.println(rb.getString("thank.you.msg"));
+		CharSequence creditCard; 
+		
+		do {
+			creditCard= sc.next();
+			if(Pattern.matches("\\d{16}",creditCard)) {
+				System.out.println(rb.getString("thank.you.msg"));
 
-			orderManagementService.addOrder(createOrder(creditCard));
+				orderManagementService.addOrder(createOrder(creditCard));
+				
+				context.getSessionCart().getProducts().clear();
+				
+				context.getMainMenu().start();
+			}
+			else {
 			
-			context.getSessionCart().getProducts().clear();
-			
-			context.getMainMenu().start();
-		}
-		System.out.println("invalid.credit");
+				System.out.println(rb.getString("invalid.credit"));
+			}
+		} while(!Pattern.matches("\\d{16}",creditCard));
+		
 	}
+	
 	
 
 	private Purchase createOrder(CharSequence creditCard) {
