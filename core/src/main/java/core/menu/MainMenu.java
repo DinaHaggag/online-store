@@ -9,9 +9,11 @@ public class MainMenu implements Menu {
 	private ApplicationContext context;
 	private ResourceBundle rb;
 	
+	 
 	{
 		context = ApplicationContext.getInstance();
 		rb = ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE_NAME);
+		
 	}
 
 	@Override

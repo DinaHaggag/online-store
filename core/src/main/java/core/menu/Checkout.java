@@ -70,7 +70,7 @@ public class Checkout implements Menu {
 		order.setCreditCardNumber(creditCard);
 		order.setProducts(context.getSessionCart().getProducts());
 		order.setCustomerId(context.getLoggedInUser().getId());
-		orderManagementService.addOrder(order);
+
 		return order;
 	}
 
